@@ -4,7 +4,7 @@ const config = require('../config/config');
 const swaggerDef = {
   openapi: '3.0.0',
   info: {
-    title: 'Mentor app API Documentation',
+    title: 'Med Bot API Documentation',
     version,
     license: {
       name: 'MIT',
@@ -14,9 +14,6 @@ const swaggerDef = {
   servers: [
     {
       url: `http://localhost:${config.port}/v1`,
-    },
-    {
-      url: 'https://mentor-app-otfb.onrender.com/v1/',
     },
   ],
 };
