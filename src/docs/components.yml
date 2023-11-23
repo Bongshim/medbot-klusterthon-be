@@ -25,21 +25,16 @@ components:
           type: string
       example:
         id: 1
-        email: jamal@example.com
-        firstName: Jamal
-        lastName: Hassan
-        username: jamal
-        phoneNumber: 0712345678
+        email: user@example.com
+        firstName: John
+        lastName: Doe
+        username: johndoe
+        phoneNumber: 08012345678
         profileImage: http://image.jpg
-        position: Software Engineer
         password: password
-        grade: Entry Level
-        gradeNumber: 8
-        studyBackground: Computer Science
-        yearsOfExperience: 2
-        bio: I am a software engineer
         roleId: 1
-        userType: user
+        userType: admin
+        
 
     UserList:
       type: array
