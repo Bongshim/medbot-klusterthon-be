@@ -15,6 +15,9 @@ const swaggerDef = {
     {
       url: `http://localhost:${config.port}/v1`,
     },
+    {
+      url: 'https://medbot-tflv.onrender.com/v1',
+    },
   ],
 };
 
