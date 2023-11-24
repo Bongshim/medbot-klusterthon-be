@@ -28,17 +28,6 @@ const jwtVerify = async (payload, done) => {
             },
           ],
         },
-        {
-          association: 'userOnboarding',
-        },
-        {
-          association: 'userSkill',
-          through: { attributes: [] },
-        },
-        {
-          association: 'userInterest',
-          through: { attributes: [] },
-        },
       ],
     });
 

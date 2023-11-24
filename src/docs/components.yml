@@ -34,7 +34,25 @@ components:
         password: password
         roleId: 1
         userType: admin
-        
+
+    CreateUser:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        password:
+          type: string
+      example:
+        email: user@example.com
+        firstName: John
+        lastName: Doe
+        password: password1
+
 
     UserList:
       type: array

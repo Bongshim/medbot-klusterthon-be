@@ -6,7 +6,7 @@ const { Variable } = require('../models/variable.model');
 const { MessageTemplate } = require('../models/message_template.model');
 const { createMessageTemplate } = require('../services/message_template.service');
 const { createUser } = require('../services/user.service');
-const { permissions, defaultMessageTemplates } = require('./constants');
+const { permissions, defaultMessageTemplates, userPermissions } = require('./constants');
 
 const setRolePermissions = async (roleName, permissionsValue) => {
   const role = await Role.findOne({ where: { name: roleName } });
@@ -18,6 +18,7 @@ const setAllPermissions = async () => {
   const adminPermissionsValue = permissions.map((permission) => permission.value);
 
   setRolePermissions('admin', adminPermissionsValue);
+  setRolePermissions('user', userPermissions);
 };
 
 const createRoles = async () => {
@@ -26,6 +27,10 @@ const createRoles = async () => {
     {
       name: 'admin',
       description: 'system admin with access to all features',
+    },
+    {
+      name: 'user',
+      description: 'user with access to limited features',
     },
   ];
 

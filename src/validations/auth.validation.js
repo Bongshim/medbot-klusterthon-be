@@ -6,13 +6,9 @@ const register = {
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
     firstName: Joi.string().required(),
-    username: Joi.string().required(),
-    countryId: Joi.number().required(),
-    phoneNumber: Joi.string(),
     lastName: Joi.string().required(),
     userType: Joi.string().default('user'),
-    role: Joi.string().valid('student', 'agent').default('student'),
-    isVerified: Joi.boolean().default((parent) => parent.role === 'student'),
+    role: Joi.string().default('user'),
   }),
 };
 

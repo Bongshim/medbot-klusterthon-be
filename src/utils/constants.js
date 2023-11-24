@@ -11,6 +11,8 @@ const permissions = modules.flatMap((moduleName) => {
   }));
 });
 
+const userPermissions = ['users.view', 'users.manage'];
+
 const defaultMessageTemplates = [
   {
     messageTemplate: {
@@ -54,4 +56,5 @@ const defaultMessageTemplates = [
 module.exports = {
   permissions,
   defaultMessageTemplates,
+  userPermissions,
 };

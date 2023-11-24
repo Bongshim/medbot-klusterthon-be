@@ -83,21 +83,6 @@ const getUserById = async (id) => {
           },
         ],
       },
-      {
-        association: 'userOnboarding',
-      },
-      {
-        association: 'userSkill',
-        through: { attributes: [] },
-      },
-      {
-        association: 'userInterest',
-        through: { attributes: [] },
-      },
-      {
-        association: 'userGrade',
-        attributes: ['name'],
-      },
     ],
   });
   if (!user) {
@@ -153,11 +138,6 @@ const createUser = async (userBody, createdBy = null) => {
 
     const user = await User.create({ ...userBody, createdBy });
 
-    // create onboarding for user
-    await user.createUserOnboarding({
-      ...(userBody.gradeNumber && { hasAddedGrade: true }),
-    });
-
     // send welcome email
     await sendUserWelcomeEmail(user);
 
@@ -189,8 +169,6 @@ const queryUsers = async (filter, current) => {
         [Op.like]: `%${filter.firstName || ''}%`,
       },
       ...(filter.roleId && { roleId: filter.roleId }),
-      ...(filter.gradeId && { gradeId: filter.gradeId }),
-      ...(filter.isVerified !== undefined && { isVerified: filter.isVerified }),
       ...(filter.createdBy && { createdBy: filter.createdBy }),
     },
     include: [
@@ -232,21 +210,6 @@ const getUserByEmail = async (email) => {
           },
         ],
       },
-      {
-        association: 'userOnboarding',
-      },
-      {
-        association: 'userSkill',
-        through: { attributes: [] },
-      },
-      {
-        association: 'userInterest',
-        through: { attributes: [] },
-      },
-      {
-        association: 'userGrade',
-        attributes: ['name'],
-      },
     ],
   });
 };
@@ -274,9 +237,6 @@ const getUserByEmailOrUsername = async (emailOrUsername) => {
             through: { attributes: [] },
           },
         ],
-      },
-      {
-        association: 'userOnboarding',
       },
     ],
   });
@@ -400,28 +360,6 @@ const encryptData = async (userData) => {
   return encryptedData + config.userSecret;
 };
 
-/**
- * Fetch agent by studentId
- *
- * @param {Number} studentId
- * @returns {Promise<*>}
- */
-const fetchAgentByStudentId = async (studentId) => {
-  const agent = User.findOne({
-    where: {
-      id: studentId,
-    },
-    attributes: ['createdBy'],
-    include: [
-      {
-        model: User,
-      },
-    ],
-  });
-
-  return agent;
-};
-
 module.exports = {
   createUser,
   queryUsers,
@@ -436,5 +374,4 @@ module.exports = {
   encryptData,
   updateUserPassword,
   sendUserWelcomeEmail,
-  fetchAgentByStudentId,
 };
