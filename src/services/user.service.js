@@ -123,32 +123,28 @@ const sendUserWelcomeEmail = async (user) => {
  * @returns {Promise<User>}
  */
 const createUser = async (userBody, createdBy = null) => {
-  try {
-    // check if email is taken
-    if (await isEmailTaken(userBody.email)) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-    }
-
-    // check if username is taken
-    if (!!userBody.username && (await isUsernameTaken(userBody.username))) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Username already taken');
-    }
-
-    // eslint-disable-next-line no-param-reassign
-    if (userBody.password) {
-      Object.assign(userBody, { password: bcrypt.hashSync(userBody.password, 8) });
-    }
-
-    const user = await User.create({ ...userBody, createdBy });
-
-    // send welcome email
-    await sendUserWelcomeEmail(user);
-
-    // return user object with role
-    return getUserById(user.id);
-  } catch (error) {
-    logger.info(error);
+  // check if email is taken
+  if (await isEmailTaken(userBody.email)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
+
+  // check if username is taken
+  if (!!userBody.username && (await isUsernameTaken(userBody.username))) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Username already taken');
+  }
+
+  // eslint-disable-next-line no-param-reassign
+  if (userBody.password) {
+    Object.assign(userBody, { password: bcrypt.hashSync(userBody.password, 8) });
+  }
+
+  const user = await User.create({ ...userBody, createdBy });
+
+  // send welcome email
+  await sendUserWelcomeEmail(user);
+
+  // return user object with role
+  return getUserById(user.id);
 };
 
 /**
