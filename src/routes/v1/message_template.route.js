@@ -110,7 +110,7 @@ module.exports = router;
  *          type: string
  *          description: page number
  *      - in: query
- *        name: limit
+ *        name: paginate
  *        schema:
  *          type: integer
  *          minimum: 1

@@ -36,10 +36,10 @@ const defaultMessageTemplates = [
       description: 'Reset password message',
       emailSubject: 'Reset Password',
       emailBody:
-        'Dear {{firstName}}, To reset your password, click on this link: http://localhost:3000/forgot-password/reset?token={{token}} If you did not request any password resets, then ignore this email.',
+        'Dear {{firstName}}, To reset your password, click on this link: http://localhost:3000/auth/forgot-password/reset?token={{token}} If you did not request any password resets, then ignore this email.',
       smsSubject: 'Reset Password',
       smsBody:
-        'Dear {{firstName}}, To reset your password, click on this link: http://localhost:3000/forgot-password/reset?token={{token}} If you did not request any password resets, then ignore this email.',
+        'Dear {{firstName}}, To reset your password, click on this link: http://localhost:3000/auth/forgot-password/reset?token={{token}} If you did not request any password resets, then ignore this email.',
       type: 'admin',
     },
     variables: [
