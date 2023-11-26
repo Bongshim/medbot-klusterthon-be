@@ -46,6 +46,7 @@ const updateUser = {
       lastName: Joi.string(),
       phoneNumber: Joi.string(),
       profileImage: Joi.string(),
+      dateOfBirth: Joi.date(),
       bodyHeight: Joi.number(),
       bodyWeight: Joi.number(),
     })

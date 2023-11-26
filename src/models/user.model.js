@@ -29,6 +29,9 @@ const User = sequelize.define(
         }
       },
     },
+    dateOfBirth: {
+      type: DataTypes.DATE,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

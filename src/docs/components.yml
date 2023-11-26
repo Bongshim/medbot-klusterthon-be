@@ -27,6 +27,8 @@ components:
           type: number
         bodyWeight:
           type: number
+        dateOfBirth:
+          type: date
       example:
         id: 1
         email: user@example.com
@@ -40,6 +42,7 @@ components:
         userType: admin
         bodyHeight: 1.8
         bodyWeight: 70
+        dateOfBirth: 1990-01-01
 
     CreateUser:
       type: object
