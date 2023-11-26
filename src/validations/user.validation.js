@@ -46,13 +46,8 @@ const updateUser = {
       lastName: Joi.string(),
       phoneNumber: Joi.string(),
       profileImage: Joi.string(),
-      position: Joi.string(),
-      gradeId: Joi.number().integer(),
-      studyBackground: Joi.string(),
-      yearsOfExperience: Joi.string(),
-      isVerified: Joi.boolean(),
-      bio: Joi.string(),
-      roleId: Joi.number(),
+      bodyHeight: Joi.number(),
+      bodyWeight: Joi.number(),
     })
     .min(1),
 };

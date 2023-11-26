@@ -83,6 +83,9 @@ const getUserById = async (id) => {
           },
         ],
       },
+      {
+        association: 'healthBackground',
+      },
     ],
   });
   if (!user) {
