@@ -8,3 +8,4 @@ module.exports.roleService = require('./role.service');
 module.exports.permissionService = require('./permissions.service');
 module.exports.uploadService = require('./upload.service');
 module.exports.healthBackgroundService = require('./healthBackground.service');
+module.exports.openaiService = require('./openai.service');

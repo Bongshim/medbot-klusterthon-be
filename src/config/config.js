@@ -27,6 +27,7 @@ const envVarsSchema = Joi.object()
     CLOUDINARY_API_KEY: Joi.string().description('Cloudinary api key'),
     CLOUDINARY_API_SECRET: Joi.string().description('Cloudinary api secret'),
     USER_SECRET: Joi.string().description('User secret'),
+    OPEN_AI_KEY: Joi.string().description('Open AI key'),
   })
   .unknown();
 
@@ -71,4 +72,5 @@ module.exports = {
     from: envVars.EMAIL_FROM,
   },
   userSecret: envVars.USER_SECRET,
+  openAiKey: envVars.OPEN_AI_KEY,
 };

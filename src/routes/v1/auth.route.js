@@ -17,7 +17,6 @@ router.post(
   authController.sendVerificationEmail
 );
 router.post('/verify-email', validate(authValidation.verifyEmail), authController.verifyEmail);
-router.post('/ms-auth', validate(authValidation.microsoftUser), authController.loginWithMicrosoft);
 
 module.exports = router;
 

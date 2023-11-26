@@ -221,6 +221,28 @@ components:
         hasDiabetes: false
         isSmoker: true
 
+    Recommendation:
+      type: object
+      properties:
+        symptom:
+          type: string
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              question:
+                type: string
+              answer:
+                type: string
+      example:
+        symptom: High Blood Pressure
+        questions:
+          - question: Do you have a family history of high blood pressure?
+            answer: Yes
+          - question: Do you have a family history of high blood pressure?
+            answer: Yes
+
   responses:
     DuplicateEmail:
       description: Email already taken
@@ -258,6 +280,38 @@ components:
           example:
             code: 404
             message: Not found
+    Recommendation:
+      type: object
+      properties:
+        symptom:
+          type: string
+        diagnosis_summary:
+          type: string
+        possible_causes:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              recommendation:
+                type: string
+              description:
+                type: string
+      example:
+        symptom: High Blood Pressure
+        diagnosis_summary: You have high blood pressure
+        possible_causes:
+          - title: Family History
+            recommendation: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+              ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc eu nisl. Nulla facilisi.
+            description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+              ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc eu nisl. Nulla facilisi.
+          - title: Family History
+            recommendation: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+              ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc eu nisl. Nulla facilisi.
+            description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+              ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc eu nisl. Nulla facilisi.
 
   securitySchemes:
     bearerAuth:

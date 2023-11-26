@@ -74,22 +74,6 @@ const verifyEmail = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
-const loginWithMicrosoft = catchAsync(async (req, res) => {
-  const role = await roleService.getRolesByName(req.body.role);
-  const user = await authService.signInWithMicrosoft({ ...req.body, roleId: role.id });
-
-  // Generate tokens
-  const tokens = await tokenService.generateAuthTokens(user.dataValues.id);
-
-  // Modify user object to bring permissions to the front
-  const data = extractPermissions(user);
-
-  // encrypt user data
-  const encryptedUser = await userService.encryptData({ ...user.dataValues, ...data });
-
-  res.send({ encryptedUser, tokens });
-});
-
 module.exports = {
   register,
   login,
@@ -99,5 +83,4 @@ module.exports = {
   resetPassword,
   sendVerificationEmail,
   verifyEmail,
-  loginWithMicrosoft,
 };

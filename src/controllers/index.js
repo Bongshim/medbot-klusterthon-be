@@ -6,3 +6,4 @@ module.exports.roleController = require('./role.controller');
 module.exports.permissionController = require('./permission.controller');
 module.exports.uploadController = require('./upload.controller');
 module.exports.healthBackgroundController = require('./healthBackground.controller');
+module.exports.openaiController = require('./openai.controller');

@@ -5,3 +5,4 @@ module.exports.messageTemplateValidation = require('./message_template.validatio
 module.exports.roleValidation = require('./role.validation');
 module.exports.permissionValidation = require('./permission.validation');
 module.exports.healthBackgroundValidation = require('./healthBackground.validation');
+module.exports.openaiValidation = require('./openai.validation');

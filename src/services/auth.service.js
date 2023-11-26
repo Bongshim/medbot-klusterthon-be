@@ -6,7 +6,6 @@ const { Token } = require('../models/token.model');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
 const { sendVerificationEmail } = require('./email.service');
-const logger = require('../config/logger');
 
 /**
  * Login with username and password
@@ -144,40 +143,6 @@ const handleSendEmailVerificationToken = async (user) => {
   };
 };
 
-/**
- * Sign in with microsoft
- * @param {Object} user
- * @param {string} firstName
- * @param {string} lastName
- * @param {string} email
- * @param {string} msId
- * @param {string} userType
- * @param {number} roleId
- * @returns {Promise<User>}
- */
-const signInWithMicrosoft = async (user) => {
-  // check if user exists
-  const userExists = await userService.getUserByEmail(user.email);
-  if (userExists) {
-    // update last login
-    await User.update({ lastLogin: new Date() }, { where: { id: userExists.dataValues.id } });
-    logger.info('User exists, logging in...');
-    return userExists;
-  }
-
-  logger.info('User does not exist, creating...');
-  // create user
-  const newUser = await userService.createUser({
-    ...user,
-    isMicrosoftUser: true,
-  });
-
-  // update last login
-  await User.update({ lastLogin: new Date() }, { where: { id: newUser.dataValues.id } });
-
-  return newUser;
-};
-
 module.exports = {
   loginUserWithEmailAndPassword,
   logout,
@@ -186,5 +151,4 @@ module.exports = {
   verifyEmail,
   extractPermissions,
   handleSendEmailVerificationToken,
-  signInWithMicrosoft,
 };
