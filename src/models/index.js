@@ -5,6 +5,7 @@ const { MessageTemplate } = require('./message_template.model');
 const { Variable } = require('./variable.model');
 const { Token } = require('./token.model');
 const { Media } = require('./media.model');
+const { HealthBackground } = require('./healthBackground.model');
 
 exports.association = () => {
   // User - Token
@@ -34,4 +35,8 @@ exports.association = () => {
   // User - Media
   User.hasMany(Media, { foreignKey: 'userId', as: 'media' });
   Media.belongsTo(User, { foreignKey: 'userId', as: 'media' });
+
+  // User - Health Background
+  User.hasOne(HealthBackground, { foreignKey: 'userId', as: 'healthBackground' });
+  HealthBackground.belongsTo(User, { foreignKey: 'userId', as: 'users' });
 };

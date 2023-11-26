@@ -8,6 +8,7 @@ const variableRoute = require('./variable.route');
 const roleRoute = require('./role.route');
 const permissionRoute = require('./permission.route');
 const uploadRoute = require('./upload.route');
+const healthBackgroundRoute = require('./healthBackground.route');
 
 const router = express.Router();
 
@@ -39,6 +40,10 @@ const defaultRoutes = [
   {
     path: '/uploads',
     route: uploadRoute,
+  },
+  {
+    path: '/health-background',
+    route: healthBackgroundRoute,
   },
 ];
 

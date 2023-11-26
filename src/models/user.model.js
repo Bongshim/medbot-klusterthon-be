@@ -56,6 +56,12 @@ const User = sequelize.define(
     lastLogin: {
       type: DataTypes.DATE,
     },
+    bodyHeight: {
+      type: DataTypes.FLOAT,
+    },
+    bodyWeight: {
+      type: DataTypes.FLOAT,
+    },
   },
   {
     paranoid: true,

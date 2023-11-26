@@ -53,12 +53,10 @@ components:
         lastName: Doe
         password: password1
 
-
     UserList:
       type: array
       items:
         $ref: '#/components/schemas/User'
-
 
     Token:
       type: object
@@ -196,6 +194,23 @@ components:
           type: number
         message:
           type: string
+
+    HealthBackground:
+      type: object
+      properties:
+        id:
+          type: integer
+        hasHighBloodPressure:
+          type: boolean
+        hasDiabetes:
+          type: boolean
+        isSmoker:
+          type: boolean
+      example:
+        id: 1
+        hasHighBloodPressure: true
+        hasDiabetes: false
+        isSmoker: true
 
   responses:
     DuplicateEmail:

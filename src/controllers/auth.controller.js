@@ -1,12 +1,23 @@
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
-const { authService, userService, tokenService, emailService, roleService } = require('../services');
+const {
+  authService,
+  userService,
+  tokenService,
+  emailService,
+  roleService,
+  healthBackgroundService,
+} = require('../services');
 const { extractPermissions } = require('../services/auth.service');
 const pick = require('../utils/pick');
 
 const register = catchAsync(async (req, res) => {
   const role = await roleService.getRolesByName(req.body.role);
   const user = await userService.createUser({ ...req.body, roleId: role.id });
+
+  // Instantiate a new healthBackground
+  await healthBackgroundService.createHealthBackground(user.id);
+
   // Send email verification
   const verification = await authService.handleSendEmailVerificationToken(user);
 
