@@ -70,8 +70,19 @@ const getRecommendationsFromOpenAI = async (userInput) => {
   return response;
 };
 
+/**
+ * Handle get more information on a symptom from OpenAI
+ * @param {string} userInput
+ * @returns
+ */
+const getReportFromOpenAI = async (userInput) => {
+  const response = await handleOpenAIRequests(JSON.stringify(userInput), openAiSystemPrompts.getReport);
+  return response;
+};
+
 module.exports = {
   sendSymptomsToOpenAI,
   getHealthQuestionsFromOpenAI,
   getRecommendationsFromOpenAI,
+  getReportFromOpenAI,
 };

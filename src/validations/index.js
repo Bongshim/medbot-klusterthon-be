@@ -6,3 +6,5 @@ module.exports.roleValidation = require('./role.validation');
 module.exports.permissionValidation = require('./permission.validation');
 module.exports.healthBackgroundValidation = require('./healthBackground.validation');
 module.exports.openaiValidation = require('./openai.validation');
+module.exports.symptomsValidation = require('./symptoms.validation');
+module.exports.userSymptomsValidation = require('./userSymptoms.validation');

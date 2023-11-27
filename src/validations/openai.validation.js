@@ -26,8 +26,16 @@ const getRecommendationsFromOpenAI = {
   }),
 };
 
+const getReportFromOpenAI = {
+  body: Joi.object().keys({
+    symptom: Joi.string().required(),
+    description: Joi.string().required(),
+  }),
+};
+
 module.exports = {
   sendSymptomsToOpenAI,
   getHealthQuestionsFromOpenAI,
   getRecommendationsFromOpenAI,
+  getReportFromOpenAI,
 };

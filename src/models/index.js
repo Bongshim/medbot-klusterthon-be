@@ -6,6 +6,8 @@ const { Variable } = require('./variable.model');
 const { Token } = require('./token.model');
 const { Media } = require('./media.model');
 const { HealthBackground } = require('./healthBackground.model');
+const { UserSymptoms } = require('./userSymptoms.model');
+const { Symptoms } = require('./symptoms.model');
 
 exports.association = () => {
   // User - Token
@@ -39,4 +41,12 @@ exports.association = () => {
   // User - Health Background
   User.hasOne(HealthBackground, { foreignKey: 'userId', as: 'healthBackground' });
   HealthBackground.belongsTo(User, { foreignKey: 'userId', as: 'users' });
+
+  // User - User Symptoms
+  User.hasMany(UserSymptoms, { foreignKey: 'userId', as: 'userSymptoms' });
+  UserSymptoms.belongsTo(User, { foreignKey: 'userId', as: 'users' });
+
+  // Symptoms - User Symptoms
+  Symptoms.hasMany(UserSymptoms, { foreignKey: 'symptomId' });
+  UserSymptoms.belongsTo(Symptoms, { foreignKey: 'symptomId' });
 };

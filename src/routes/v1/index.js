@@ -10,6 +10,7 @@ const permissionRoute = require('./permission.route');
 const uploadRoute = require('./upload.route');
 const healthBackgroundRoute = require('./healthBackground.route');
 const aiRoutes = require('./openai.route');
+const symptomRoutes = require('./symptoms.route');
 
 const router = express.Router();
 
@@ -49,6 +50,10 @@ const defaultRoutes = [
   {
     path: '/ai',
     route: aiRoutes,
+  },
+  {
+    path: '/symptoms',
+    route: symptomRoutes,
   },
 ];
 

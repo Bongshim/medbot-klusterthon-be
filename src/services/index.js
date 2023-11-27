@@ -9,3 +9,5 @@ module.exports.permissionService = require('./permissions.service');
 module.exports.uploadService = require('./upload.service');
 module.exports.healthBackgroundService = require('./healthBackground.service');
 module.exports.openaiService = require('./openai.service');
+module.exports.symptomsService = require('./symptoms.service');
+module.exports.userSymptomsService = require('./userSymptoms.service');

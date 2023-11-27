@@ -18,6 +18,8 @@ router
   .route('/recommendations')
   .post(auth(), validate(openaiValidation.getRecommendationsFromOpenAI), openaiController.getRecommendationsFromOpenAI);
 
+router.route('/report').post(auth(), validate(openaiValidation.getReportFromOpenAI), openaiController.getReportFromOpenAI);
+
 module.exports = router;
 
 /**
@@ -133,6 +135,41 @@ module.exports = router;
  *                    type: string
  *                  data:
  *                    $ref: '#/components/responses/Recommendation'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ */
+
+/**
+ * @swagger
+ * /ai/report:
+ *   post:
+ *     summary: Get report from AI
+ *     description: Get report from AI
+ *     tags: [AI]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/GetReport'
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  data:
+ *                    $ref: '#/components/schemas/Report'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

@@ -245,6 +245,88 @@ components:
           - question: Do you have a family history of high blood pressure?
             answer: Yes
 
+    GetReport:
+      type: object
+      properties:
+        symptom:
+          type: string
+        description:
+          type: string
+      example:
+        symptom: High Blood Pressure
+        description: You have high blood pressure
+
+    Report:
+      type: object
+      properties:
+        overview:
+          type: string
+        risks:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+        symptoms:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+        diagnosis:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+        treatment:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+        prevention:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+
+    Symptom:
+      type: object
+      properties:
+        title:
+          type: string
+        keyword:
+          type: string
+        description:
+          type: string
+      example:
+        title: High Blood Pressure
+        keyword: high-blood-pressure
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+          ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc eu nisl. Nulla facilisi.
+
+    SymptomList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Symptom'        
+
   responses:
     DuplicateEmail:
       description: Email already taken
