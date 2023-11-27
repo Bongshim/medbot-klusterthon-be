@@ -5,6 +5,9 @@ const { sequelize } = require('../config/database');
 const UserSymptoms = sequelize.define(
   'userSymptoms',
   {
+    title: {
+      type: DataTypes.STRING,
+    },
     summary: {
       type: DataTypes.STRING,
       allowNull: false,

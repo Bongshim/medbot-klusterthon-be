@@ -25,10 +25,11 @@ const createUserSymptoms = async (userSymptomsBody, userId) => {
       title: userSymptomsBody.symptom,
     },
   });
+
   const userSymptoms = await UserSymptoms.create({
     ...userSymptomsBody,
     userId,
-    symptomId: symptom.id,
+    ...(symptom && { symptomId: symptom.id }),
   });
 
   return userSymptoms;
@@ -43,9 +44,18 @@ const createUserSymptoms = async (userSymptomsBody, userId) => {
  */
 const getAllUserSymptoms = async (filter) => {
   const whereCondition = buildWhereCondition(filter);
-  const userSymptoms = await UserSymptoms.findAll({
-    where: whereCondition,
-  });
+  const userSymptoms = await UserSymptoms.findAll(
+    {
+      where: whereCondition,
+    },
+    {
+      include: [
+        {
+          model: Symptoms,
+        },
+      ],
+    }
+  );
   return userSymptoms;
 };
 

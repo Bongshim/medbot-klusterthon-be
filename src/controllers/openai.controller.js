@@ -41,7 +41,10 @@ const getRecommendationsFromOpenAI = catchAsync(async (req, res) => {
   const response = await openaiService.getRecommendationsFromOpenAI(req.body);
 
   // save user symptoms to database
-  const createdUserSymptoms = await userSymptomsService.createUserSymptoms(response, req.user.id);
+  const createdUserSymptoms = await userSymptomsService.createUserSymptoms(
+    { ...response, title: req.body.symptom },
+    req.user.id
+  );
 
   res.status(httpStatus.OK).send({
     message: 'success',
