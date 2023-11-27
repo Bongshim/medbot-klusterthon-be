@@ -19,6 +19,8 @@ components:
           type: string
         password:
           type: string
+        gender:
+          type: string
         roleId:
           type: integer
         userType:

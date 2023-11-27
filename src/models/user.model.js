@@ -29,6 +29,9 @@ const User = sequelize.define(
         }
       },
     },
+    gender: {
+      type: DataTypes.ENUM('male', 'female'),
+    },
     dateOfBirth: {
       type: DataTypes.DATE,
     },
@@ -50,8 +53,7 @@ const User = sequelize.define(
       defaultValue: true,
     },
     userType: {
-      type: DataTypes.ENUM('admin', 'user'),
-      defaultValue: 'user',
+      type: DataTypes.STRING,
     },
     phoneNumber: {
       type: DataTypes.STRING,
