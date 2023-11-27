@@ -66,7 +66,7 @@ const sendResetPasswordEmail = async (to, token) => {
 const sendVerificationEmail = async (to, token) => {
   const subject = 'Email Verification';
   // replace this url with the link to the email verification page of your front-end app
-  const verificationEmailUrl = `http://localhost:3000/auth/register/verify-email?token=${token}`;
+  const verificationEmailUrl = `https://stuternmedbot.netlify.app/auth/register/verify-email?token=${token}`;
   const text = VerifyEmailMessage(verificationEmailUrl);
   await sendEmail(to, subject, text);
 };
