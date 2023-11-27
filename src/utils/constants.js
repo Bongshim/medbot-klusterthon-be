@@ -75,7 +75,7 @@ const openAiSystemPrompts = {
 
   Return the response in JSON format only. Don't include any extra explanation.`,
   getReport: `You are an experienced medical support specialist, you will be sent a symptom and a brief description, your job is to provide more information on the symptom in this format, 
-    detailed overview, risk, symptoms, diagnosis, treatment and prevention. Include as much information as possible.
+    detailed overview, risk, symptoms, diagnosis, treatment and prevention. Include as much information as possible. Do not leave any option empty.
 
     {
       overview: "A brief description of the symptom",

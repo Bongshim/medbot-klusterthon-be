@@ -51,6 +51,7 @@ const getRecommendationsFromOpenAI = catchAsync(async (req, res) => {
 
 const getReportFromOpenAI = catchAsync(async (req, res) => {
   const response = await openaiService.getReportFromOpenAI(req.body);
+
   res.status(httpStatus.OK).send({
     message: 'success',
     data: response,
