@@ -16,6 +16,10 @@ const Symptoms = sequelize.define(
     description: {
       type: DataTypes.STRING,
     },
+    count: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   },
   {
     paranoid: true,

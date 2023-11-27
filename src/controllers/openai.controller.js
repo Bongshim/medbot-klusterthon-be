@@ -31,6 +31,9 @@ const sendSymptomsToOpenAI = catchAsync(async (req, res) => {
 
 const getHealthQuestionsFromOpenAI = catchAsync(async (req, res) => {
   const response = await openaiService.getHealthQuestionsFromOpenAI(req.query.symptom);
+
+  await symptomsService.updateSymptomCount(req.query.symptom);
+
   res.status(httpStatus.OK).send({
     message: 'success',
     data: response,

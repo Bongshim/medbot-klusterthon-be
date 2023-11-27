@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { buildWhereCondition } = require('../utils/FilterSort');
 const { Symptoms } = require('../models/symptoms.model');
 
@@ -41,11 +42,39 @@ const getAllSymptoms = async (filter) => {
   const whereCondition = buildWhereCondition(filter);
   const symptoms = await Symptoms.findAll({
     where: whereCondition,
+    limit: 10,
+    order: [['count', 'DESC']],
   });
   return symptoms;
+};
+
+const updateSymptomCount = async (symptom) => {
+  const existingSymptom = await Symptoms.findOne({
+    where: {
+      title: { [Op.like]: `%${symptom}%` },
+    },
+  });
+
+  if (!existingSymptom) {
+    return null;
+  }
+
+  const updatedSymptom = await Symptoms.update(
+    {
+      count: existingSymptom.count + 1,
+    },
+    {
+      where: {
+        title: symptom,
+      },
+    }
+  );
+
+  return updatedSymptom;
 };
 
 module.exports = {
   createSymptom,
   getAllSymptoms,
+  updateSymptomCount,
 };
