@@ -6,7 +6,7 @@ const { userSymptomsService } = require('../services');
 const getAllUserSymptoms = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['userId', 'symptomId']);
 
-  const result = await userSymptomsService.queryUserSymptoms(filter);
+  const result = await userSymptomsService.getAllUserSymptoms(filter);
   res.status(httpStatus.OK).send({
     message: 'success',
     data: result,

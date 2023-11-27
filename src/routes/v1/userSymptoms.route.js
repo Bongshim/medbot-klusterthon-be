@@ -49,7 +49,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/SymptomList'
+ *               $ref: '#/components/schemas/RecommendationList'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -78,7 +78,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/SymptomList'
+ *               $ref: '#/components/schemas/Recommendation'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

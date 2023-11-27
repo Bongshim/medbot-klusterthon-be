@@ -397,6 +397,11 @@ components:
             description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
               ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc eu nisl. Nulla facilisi.
 
+    RecommendationList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Recommendation'
+        
   securitySchemes:
     bearerAuth:
       type: http
