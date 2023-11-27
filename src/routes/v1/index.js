@@ -11,6 +11,7 @@ const uploadRoute = require('./upload.route');
 const healthBackgroundRoute = require('./healthBackground.route');
 const aiRoutes = require('./openai.route');
 const symptomRoutes = require('./symptoms.route');
+const userSymptoms = require('./userSymptoms.route');
 
 const router = express.Router();
 
@@ -54,6 +55,10 @@ const defaultRoutes = [
   {
     path: '/symptoms',
     route: symptomRoutes,
+  },
+  {
+    path: '/health-assessments',
+    route: userSymptoms,
   },
 ];
 

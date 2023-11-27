@@ -3,15 +3,6 @@ const catchAsync = require('../utils/catchAsync');
 const pick = require('../utils/pick');
 const { userSymptomsService } = require('../services');
 
-const createUserSymptoms = catchAsync(async (req, res) => {
-  const userSymptoms = await userSymptomsService.createUserSymptoms(req.body, req.user.id);
-
-  res.status(httpStatus.CREATED).send({
-    message: 'success',
-    data: userSymptoms,
-  });
-});
-
 const getAllUserSymptoms = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['userId', 'symptomId']);
 
@@ -32,7 +23,6 @@ const getUserSymptomsById = catchAsync(async (req, res) => {
 });
 
 module.exports = {
-  createUserSymptoms,
   getAllUserSymptoms,
   getUserSymptomsById,
 };

@@ -50,6 +50,7 @@ const updateUser = {
       dateOfBirth: Joi.date(),
       bodyHeight: Joi.number(),
       bodyWeight: Joi.number(),
+      hasOnboarded: Joi.boolean(),
     })
     .min(1),
 };

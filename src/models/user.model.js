@@ -67,6 +67,10 @@ const User = sequelize.define(
     bodyWeight: {
       type: DataTypes.FLOAT,
     },
+    hasOnboarded: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     paranoid: true,
