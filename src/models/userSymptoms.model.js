@@ -9,7 +9,7 @@ const UserSymptoms = sequelize.define(
       type: DataTypes.STRING,
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     causes: {

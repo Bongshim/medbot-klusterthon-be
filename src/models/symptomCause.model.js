@@ -3,7 +3,7 @@ const { sequelize } = require('../config/database');
 
 const SymptomCause = sequelize.define('symptomCause', {
   overview: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   risks: {
     type: DataTypes.JSON,
